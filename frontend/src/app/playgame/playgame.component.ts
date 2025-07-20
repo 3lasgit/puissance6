@@ -1,16 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService, GameState } from '../services/game.service';
 import {NgForOf, NgIf} from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';  // ← ajoute ceci
 
 @Component({
-  selector: 'app-game',
+  selector: 'app-playgame',
   templateUrl: './playgame.component.html',
   imports: [
     NgForOf,
-    NgIf
+    NgIf,
+    RouterModule,
+    HttpClientModule   // ← ajoute ici pour que HttpClient soit injecté dans GameService
   ],
-  styleUrls: ['./playgame.component.css']
 })
+
 export class PlaygameComponent implements OnInit {
   gameState: GameState | null = null;
   errorMessage: string = '';
@@ -26,6 +30,7 @@ export class PlaygameComponent implements OnInit {
       next: (state) => {
         this.gameState = state;
         this.errorMessage = '';
+        console.log(state)
       },
       error: (err) => {
         this.errorMessage = 'Erreur lors du chargement du jeu';

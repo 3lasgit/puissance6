@@ -9,7 +9,7 @@ const gameLogic_1 = require("./gameLogic"); // import de ton module jeu
 const app = (0, express_1.default)();
 const PORT = 8080;
 app.use((0, cors_1.default)({
-    origin: 'http://localhost:4200', // front React (dev)
+    origin: 'http://localhost:4200',
 }));
 app.use(express_1.default.json());
 // Route racine GET simple pour tester
@@ -35,6 +35,8 @@ app.post('/api/games', (req, res) => {
         status: 'waiting'
     };
     games.push(newGame);
+    // ✅ Initialise le gameState global ici
+    (0, gameLogic_1.initGame)(); // ← ajoute cette ligne
     res.status(201).json(newGame);
 });
 // Route pour récupérer l'état du jeu

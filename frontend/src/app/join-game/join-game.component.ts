@@ -21,6 +21,7 @@ constructor(private activatedroute: ActivatedRoute, private router: Router) {
   });
 }
 playGame() {
+  console.log(this.gameId)
   this.router.navigate(['/playgame', this.gameId]);
 }
 

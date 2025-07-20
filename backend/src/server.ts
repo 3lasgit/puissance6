@@ -6,7 +6,7 @@ const app = express();
 const PORT = 8080;
 
 app.use(cors({
-    origin: 'http://localhost:4200', // front React (dev)
+    origin: 'http://localhost:4200',
 }));
 app.use(express.json());
 
@@ -39,6 +39,10 @@ app.post('/api/games', (req, res) => {
     };
 
     games.push(newGame);
+
+    // ✅ Initialise le gameState global ici
+    initGame(); // ← ajoute cette ligne
+
     res.status(201).json(newGame);
 });
 

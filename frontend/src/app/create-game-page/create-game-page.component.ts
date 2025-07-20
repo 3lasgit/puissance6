@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-game-page',
@@ -16,7 +17,7 @@ export class CreateGamePageComponent {
   blitzMinuteDuration = 15;
   message = '';
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   createGame() {
     const payload = {
@@ -28,6 +29,7 @@ export class CreateGamePageComponent {
       next: (res) => {
         console.log('Game created', res);
         this.message = 'Partie créée avec succès !';
+        this.router.navigate(['/list-games-to-join']);
       },
       error: (err) => {
         console.error('Erreur lors de la création', err);
