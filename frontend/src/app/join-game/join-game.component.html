@@ -1,0 +1,13 @@
+<H1>Join Game</H1>
+<H2>Game id: {{gameId}}</H2>
+<div class="container">
+  <div class="row">
+    <label class="col-md-2">Player Name</label>
+    <input class="col-md-4" type="text"
+           [(ngModel)]="player2Name">
+  </div>
+  <div class="row">
+    <button class="col-md-2"
+            (click)="playGame()">Play</button>
+  </div>
+</div>

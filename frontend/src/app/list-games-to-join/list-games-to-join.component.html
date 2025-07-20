@@ -1,0 +1,7 @@
+<h2>Parties disponibles</h2>
+<ul>
+  <li *ngFor="let game of games">
+    Partie {{ game.id }} - {{ game.player1Name }}
+    <button (click)="joinGame(game.id)">Rejoindre</button>
+  </li>
+</ul>

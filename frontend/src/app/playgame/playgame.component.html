@@ -1,0 +1,16 @@
+<div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+
+<div *ngIf="gameState">
+  <p>Joueur courant : {{ gameState.currentPlayer }}</p>
+  <p *ngIf="gameState.winner !== null">🎉 Le joueur {{ gameState.winner }} a gagné !</p>
+
+  <table>
+    <tr *ngFor="let row of gameState.board">
+      <td *ngFor="let cell of row" (click)="playColumn(row.indexOf(cell))" style="width:30px; height:30px; border:1px solid black; text-align:center;">
+        {{ cell === 0 ? '' : cell }}
+      </td>
+    </tr>
+  </table>
+
+  <button (click)="resetGame()">Réinitialiser la partie</button>
+</div>

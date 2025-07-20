@@ -1,0 +1,17 @@
+<h2>Créer une nouvelle partie</h2>
+
+<form (ngSubmit)="createGame()">
+  <label>
+    Nom du joueur :
+    <input [(ngModel)]="player1Name" name="player1Name" required />
+  </label>
+
+  <label>
+    Durée Blitz (minutes) :
+    <input type="number" [(ngModel)]="blitzMinuteDuration" name="blitzMinuteDuration" min="1" required />
+  </label>
+
+  <button type="submit">Créer la partie</button>
+</form>
+
+<p>{{ message }}</p>
